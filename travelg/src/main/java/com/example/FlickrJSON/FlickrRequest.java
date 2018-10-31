@@ -11,21 +11,20 @@ public class FlickrRequest {
 
 
     private JSONObject responseJSON_Format;
-    private final String apiKey = "967c78a908c3f74879ddf240240f35fa";
-    private final String authToken = "72157701468768951-06ac99cf366773a6";
-    private final String apiSig = "7775f3a56ce7cf12bfcd6aa705dbba37";
+    private final String apiKey = "3fd3ce4146b0b9a22cc25de46f604053";
+    private final String apiSig = "495a6981025ef31fc9c18f4cde039f4f";
 
     public void getPhotosByGeoLoc(String latitude , String longitude,String radius){
 
         try{
 
             String url ="https://api.flickr.com/services/rest/?method=flickr.photos.search"+
-                    "&api_key=" + apiKey +
-                    "&lat=" + latitude +
-                    "&lon=" + longitude +
-                    "&radius=" + radius +
-                    "&radius_units=km&format=json&nojsoncallback=1&auth_token=" + authToken+
-                    "&api_sig=" + apiSig;
+                        "&api_key=" + apiKey +
+                        "&lat=" + latitude +
+                        "&lon=" + longitude +
+                        "&radius=" + radius +
+                        "&radius_units=km&format=json&nojsoncallback=1 "+
+                        "&api_sig=" + apiSig;
 
             URL urlObj = new URL(url);
             HttpURLConnection con = (HttpURLConnection) urlObj.openConnection();
@@ -42,7 +41,7 @@ public class FlickrRequest {
             in.close();
 
             responseJSON_Format = new JSONObject(response.toString());
-
+            System.out.println(responseJSON_Format);
         }
         catch (Exception ex){
             System.out.println(ex);
@@ -62,9 +61,6 @@ public class FlickrRequest {
         return apiKey;
     }
 
-    public String getAuthToken() {
-        return authToken;
-    }
 
     public String getApiSig() {
         return apiSig;
