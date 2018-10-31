@@ -7,6 +7,7 @@ import com.example.travelg.Repository.PhotoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -39,7 +40,7 @@ public class PhotoController {
                 }).orElseThrow(()-> new ResourceNotFoundException("City not found with id"+cityId));
     }
     @PutMapping("/cities/{cityId}/photos/{photoId}")
-    public Photo updataPhoto(@PathVariable UUID cityId,
+    public Photo updatePhoto(@PathVariable UUID cityId,
                              @PathVariable UUID photoId,
                              @Valid @RequestBody Photo photoRequest)
     {
@@ -57,6 +58,21 @@ public class PhotoController {
                     photo.setThumbnail(photoRequest.getThumbnail());
                     photo.setCity(photoRequest.getCity());
                     return  photoRepository.save(photo);
+                }).orElseThrow(()->new ResourceNotFoundException("Photo not found with id"+photoId));
+    }
+    @DeleteMapping("/cities/{cityId}/photos/{photoId}")
+    public ResponseEntity<?> deletePhoto(@PathVariable UUID cityId,
+                                         @PathVariable UUID photoId)
+    {
+        if (!cityRepository.existsById(cityId))
+        {
+            throw new ResourceNotFoundException("City not found with id "+cityId);
+
+        }
+        return photoRepository.findById(photoId)
+                .map(photo -> {
+                    photoRepository.delete(photo);
+                    return ResponseEntity.ok().build();
                 }).orElseThrow(()->new ResourceNotFoundException("Photo not found with id"+photoId));
     }
 
