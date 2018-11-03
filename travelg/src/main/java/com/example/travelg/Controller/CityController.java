@@ -51,4 +51,10 @@ public class CityController {
                     return  ResponseEntity.ok().build();
                 }).orElseThrow(()-> new ResourceNotFoundException("City not found with id" +cityId));
     }
+
+    @GetMapping("cities/{cityName}")
+    public City getCityByName(@PathVariable String cityName)
+    {
+        return cityRepository.findByName(cityName);
+    }
 }

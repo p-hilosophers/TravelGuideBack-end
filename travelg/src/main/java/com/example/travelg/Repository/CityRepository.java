@@ -11,5 +11,7 @@ import java.util.UUID;
 @Repository
 public interface CityRepository extends JpaRepository<City, UUID> {
 
+    City findByName( String name);
+
 
 }

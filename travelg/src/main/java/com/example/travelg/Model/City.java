@@ -20,6 +20,14 @@ public class City {
     private int photoCount;
 
     public City(){}
+
+    public City(String name, double longitude, double latitude, int photoCount) {
+        this.name = name;
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.photoCount = photoCount;
+    }
+
     public UUID getCityId() {
         return cityId;
     }
