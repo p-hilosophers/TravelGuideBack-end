@@ -11,7 +11,7 @@ public class FlickrRequest {
 
 
     private JSONObject responseJSON_Format;
-    private final String apiKey = "0f1cfba7b36e969278db0fbbc34bd6c6";
+    private final String apiKey = "d4acbb9dff17b254a7496f046962cdb1";
     private String url = "";
 
     public void getPhotosByGeoLoc(String latitude , String longitude,String radius){
@@ -45,9 +45,6 @@ public class FlickrRequest {
 
     private void httpRequest(){
         if(url != null){
-            if(url.contains(" ")){
-                url = url.replace(" ","+");
-            }
             try{
                 URL urlObj = new URL(this.url);
                 HttpURLConnection con = (HttpURLConnection) urlObj.openConnection();
@@ -56,7 +53,7 @@ public class FlickrRequest {
 
                 BufferedReader in = new BufferedReader( new InputStreamReader((con.getInputStream())));
                 String inputLine;
-                StringBuffer response = new StringBuffer();
+                StringBuilder response = new StringBuilder();
 
                 while ((inputLine = in.readLine()) != null){
                     response.append(inputLine);
