@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @RestController
+@RequestMapping("rest/auth")
 public class UserController {
 
     @Autowired
@@ -26,11 +26,12 @@ public class UserController {
         return userRepository.findAll();
     }
 
-   /* @GetMapping("/users/{userId}")
-    public User getUser(@PathVariable UUID userId)
+    @GetMapping("/users/{userEmail}/{password}")
+    public User getUserByEmail(@PathVariable String userEmail, @PathVariable String password)
     {
-        return userRepository.findById(userId);
-    }*/
+        return userRepository.findByEmailAndPassword(userEmail,password);
+    }
+
 
     @PostMapping("/users")
     public User createUser(@Valid @RequestBody User user)
@@ -63,7 +64,6 @@ public class UserController {
                     return ResponseEntity.ok().build();
                 }).orElseThrow(()-> new ResourceNotFoundException("User not found with id " + userId));
     }
-
 
 
 }
