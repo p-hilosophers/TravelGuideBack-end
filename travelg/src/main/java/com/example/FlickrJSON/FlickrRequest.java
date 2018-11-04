@@ -11,41 +11,66 @@ public class FlickrRequest {
 
 
     private JSONObject responseJSON_Format;
-    private final String apiKey = "3fd3ce4146b0b9a22cc25de46f604053";
-    private final String apiSig = "495a6981025ef31fc9c18f4cde039f4f";
+    private final String apiKey = "0f1cfba7b36e969278db0fbbc34bd6c6";
+    private String url = "";
 
     public void getPhotosByGeoLoc(String latitude , String longitude,String radius){
-
-        try{
-
-            String url ="https://api.flickr.com/services/rest/?method=flickr.photos.search"+
+            url ="https://api.flickr.com/services/rest/?method=flickr.photos.search"+
                         "&api_key=" + apiKey +
                         "&lat=" + latitude +
                         "&lon=" + longitude +
                         "&radius=" + radius +
-                        "&radius_units=km&format=json&nojsoncallback=1 "+
-                        "&api_sig=" + apiSig;
+                        "&radius_units=km&format=json&nojsoncallback=1";
 
-            URL urlObj = new URL(url);
-            HttpURLConnection con = (HttpURLConnection) urlObj.openConnection();
-            int responseCode = con.getResponseCode();
-            System.out.println("Response Code : " + String.valueOf(responseCode));
+            httpRequest();
+    }
 
-            BufferedReader in = new BufferedReader( new InputStreamReader((con.getInputStream())));
-            String inputLine;
-            StringBuffer response = new StringBuffer();
+    public void getPlaceId(String landscape){
+            url = "https://api.flickr.com/services/rest/?method=flickr.places.find"+
+                    "&api_key="+ apiKey+
+                    "&query="+landscape+
+                    "&format=json&nojsoncallback=1";
 
-            while ((inputLine = in.readLine()) != null){
-                response.append(inputLine);
+            httpRequest();
+    }
+
+    public void photoCountPerRegion(String placeId){
+            url = "https://api.flickr.com/services/rest/?method=flickr.places.getChildrenWithPhotosPublic"+
+                    "&api_key="+apiKey+
+                    "&place_id="+placeId+
+                    "&format=json&nojsoncallback=1";
+            httpRequest();
+    }
+
+
+    private void httpRequest(){
+        if(url != null){
+            if(url.contains(" ")){
+                url = url.replace(" ","+");
             }
-            in.close();
+            try{
+                URL urlObj = new URL(this.url);
+                HttpURLConnection con = (HttpURLConnection) urlObj.openConnection();
+                int responseCode = con.getResponseCode();
+                System.out.println("Response Code : " + String.valueOf(responseCode));
 
-            responseJSON_Format = new JSONObject(response.toString());
-            System.out.println(responseJSON_Format);
+                BufferedReader in = new BufferedReader( new InputStreamReader((con.getInputStream())));
+                String inputLine;
+                StringBuffer response = new StringBuffer();
+
+                while ((inputLine = in.readLine()) != null){
+                    response.append(inputLine);
+                }
+                in.close();
+
+                responseJSON_Format = new JSONObject(response.toString());
+                System.out.println(responseJSON_Format);
+            }
+            catch (Exception ex){
+                System.out.println(ex);
+            }
         }
-        catch (Exception ex){
-            System.out.println(ex);
-        }
+
     }
 
 
@@ -61,9 +86,5 @@ public class FlickrRequest {
         return apiKey;
     }
 
-
-    public String getApiSig() {
-        return apiSig;
-    }
 
 }
