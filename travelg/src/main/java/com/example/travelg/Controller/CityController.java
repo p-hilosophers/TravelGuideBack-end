@@ -38,6 +38,7 @@ public class CityController {
                     city.setLatitude(cityRequest.getLatitude());
                     city.setLongitude(cityRequest.getLongitude());
                     city.setName(cityRequest.getName());
+                    city.setPhoto(cityRequest.getPhoto());
                     city.setPhotoCount(cityRequest.getPhotoCount());
                     return cityRepository.save(city);
                 }).orElseThrow(()-> new ResourceNotFoundException("City not found with id" +cityId));

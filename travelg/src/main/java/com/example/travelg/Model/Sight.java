@@ -17,7 +17,7 @@ public class Sight {
 
     private double latitude;
 
-    @ManyToOne(fetch= FetchType.LAZY)
+    @ManyToOne(fetch= FetchType.EAGER)
     @JoinColumn(name="cityId",referencedColumnName = "cityId")
     private City city;
 

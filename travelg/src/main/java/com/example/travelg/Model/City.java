@@ -17,14 +17,17 @@ public class City {
 
     private double latitude;
 
+    private String photo;
+
     private int photoCount;
 
     public City(){}
 
-    public City(String name, double longitude, double latitude, int photoCount) {
+    public City(String name, double longitude, double latitude,String photo, int photoCount) {
         this.name = name;
         this.longitude = longitude;
         this.latitude = latitude;
+        this.photo = photo;
         this.photoCount = photoCount;
     }
 
@@ -67,4 +70,8 @@ public class City {
     public void setPhotoCount(int photoCount) {
         this.photoCount = photoCount;
     }
+
+    public void setPhoto(String photo){this.photo = photo;}
+
+    public String getPhoto(){return photo;};
 }
