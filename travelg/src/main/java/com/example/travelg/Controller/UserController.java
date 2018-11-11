@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("rest/auth")
 public class UserController {
 
     @Autowired
