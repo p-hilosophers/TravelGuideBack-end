@@ -45,12 +45,12 @@ public class PhotoList {
         for(String id : photoList) {
             flickrRequest.geoLocFromPhoto(id);
             json = flickrRequest.getResponseJSON_Format();
-            photoGeoLocsList.add(new PhotoGeoLoc(json.getJSONObject("photo").getJSONObject("location").getString("latitude"),
-                    json.getJSONObject("photo").getJSONObject("location").getString("longitude"),id));
+            photoGeoLocsList.add(new PhotoGeoLoc(json.getJSONObject("photo").getJSONObject("location").getString("latitude").toString(),
+                    json.getJSONObject("photo").getJSONObject("location").getString("longitude").toString()));
         }
 
         for(PhotoGeoLoc photoGeoLoc : photoGeoLocsList){
-            System.out.println(photoGeoLoc.getLatitude() + " " + photoGeoLoc.getLongitude() + " " + photoGeoLoc.getId());
+            System.out.println(photoGeoLoc.getLatitude() + " " + photoGeoLoc.getLongitude() + " " );
         }
     }
 

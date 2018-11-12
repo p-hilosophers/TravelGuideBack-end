@@ -1,13 +1,9 @@
 package com.example.FlickrJSON;
 
-public class PhotoGeoLoc {
+public class RegionGeoLoc {
+
     private String latitude;
     private String longitude;
-
-    public PhotoGeoLoc(String latitude, String longitude) {
-        this.latitude = latitude;
-        this.longitude = longitude;
-    }
 
     public String getLatitude() {
         return latitude;
@@ -24,5 +20,4 @@ public class PhotoGeoLoc {
     public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
-
 }
