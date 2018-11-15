@@ -1,4 +1,4 @@
-package com.example.travelg;
+package com.example.travelg.RepositoryTest;
 
 import com.example.travelg.Model.City;
 import com.example.travelg.Repository.CityRepository;
@@ -7,6 +7,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
 
@@ -20,6 +21,9 @@ public class CityRepositoryTest {
     @Autowired
     private CityRepository cityRepository;
 
+    @Autowired
+    private TestEntityManager entityManager;
+
     @Test
     public void testStoreCity()
     {
@@ -28,5 +32,21 @@ public class CityRepositoryTest {
 
         assertThat(city).isNotNull();
         assertThat(cityRepository.count()).isEqualTo(2L);
+    }
+
+    @Test
+    public void whenFindByName_thenReturnCity()
+    {
+        City berlin = new City();
+        berlin.setName("Berlin");
+        entityManager.persist(berlin);
+        entityManager.flush();
+
+
+
+
+        City found = cityRepository.findByName(berlin.getName());
+
+        assertThat(found.getName()).isEqualTo(berlin.getName());
     }
 }
