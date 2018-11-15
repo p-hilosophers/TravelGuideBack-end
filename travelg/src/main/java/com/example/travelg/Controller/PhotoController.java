@@ -2,15 +2,14 @@ package com.example.travelg.Controller;
 
 import com.example.travelg.Exception.ResourceNotFoundException;
 import com.example.travelg.Model.Photo;
-import com.example.travelg.Repository.CityRepository;
 import com.example.travelg.Repository.PhotoRepository;
+import com.example.travelg.Repository.SightsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -20,33 +19,32 @@ public class PhotoController {
     private PhotoRepository photoRepository;
 
     @Autowired
-    private CityRepository cityRepository;
+    private SightsRepository sightRepository;
 
-    @GetMapping("/cities/{cityId}/photos")
-    public Page<Photo> getPhotosByCityId(@PathVariable(value = "cityId") UUID cityId,
-                                         Pageable pageable)
+    @GetMapping("/sights/{sightId}/photos")
+    public List<Photo> getPhotosByCityId(@PathVariable(value = "sightId") UUID sightId)
     {
-        return photoRepository.findByCity_CityId(cityId,pageable);
+        return photoRepository.findBySight_SightId(sightId);
     }
 
-    @PostMapping("/cities/{cityId}/photos")
-    public Photo addPhoto(@PathVariable UUID cityId,
+    @PostMapping("/sights/{sightId}/photos")
+    public Photo addPhoto(@PathVariable UUID sightId,
                           @Valid @RequestBody Photo photo)
     {
-        return cityRepository.findById(cityId)
-                .map(city -> {
-                    photo.setCity(city);
+        return sightRepository.findById(sightId)
+                .map(sight -> {
+                    photo.setSight(sight);
                     return photoRepository.save(photo);
-                }).orElseThrow(()-> new ResourceNotFoundException("City not found with id"+cityId));
+                }).orElseThrow(()-> new ResourceNotFoundException("Sight not found with id"+sightId));
     }
-    @PutMapping("/cities/{cityId}/photos/{photoId}")
-    public Photo updatePhoto(@PathVariable UUID cityId,
+    @PutMapping("/sights/{sightId}/photos/{photoId}")
+    public Photo updatePhoto(@PathVariable UUID sightId,
                              @PathVariable UUID photoId,
                              @Valid @RequestBody Photo photoRequest)
     {
-        if (!cityRepository.existsById(cityId))
+        if (!sightRepository.existsById(sightId))
         {
-            throw new ResourceNotFoundException("City not found with id "+cityId);
+            throw new ResourceNotFoundException("Sight not found with id"+sightId);
 
         }
         return  photoRepository.findById(photoId)
@@ -56,17 +54,17 @@ public class PhotoController {
                     photo.setLatitude(photoRequest.getLatitude());
                     photo.setLongitude(photoRequest.getLongitude());
                     photo.setThumbnail(photoRequest.getThumbnail());
-                    photo.setCity(photoRequest.getCity());
+                    photo.setSight(photoRequest.getSight());
                     return  photoRepository.save(photo);
                 }).orElseThrow(()->new ResourceNotFoundException("Photo not found with id"+photoId));
     }
-    @DeleteMapping("/cities/{cityId}/photos/{photoId}")
-    public ResponseEntity<?> deletePhoto(@PathVariable UUID cityId,
+    @DeleteMapping("/sights/{sightId}/photos/{photoId}")
+    public ResponseEntity<?> deletePhoto(@PathVariable UUID sightId,
                                          @PathVariable UUID photoId)
     {
-        if (!cityRepository.existsById(cityId))
+        if (!sightRepository.existsById(sightId))
         {
-            throw new ResourceNotFoundException("City not found with id "+cityId);
+            throw new ResourceNotFoundException("Sight not found with id "+sightId);
 
         }
         return photoRepository.findById(photoId)

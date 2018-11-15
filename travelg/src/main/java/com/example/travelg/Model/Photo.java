@@ -1,5 +1,6 @@
 package com.example.travelg.Model;
 
+
 import javax.persistence.*;
 import java.util.UUID;
 
@@ -23,8 +24,8 @@ public class Photo {
     private byte[] thumbnail;
 
     @ManyToOne(fetch= FetchType.LAZY)
-    @JoinColumn(name="cityId",referencedColumnName = "cityId")
-    private City city;
+    @JoinColumn(name="sightId",referencedColumnName = "sightId")
+    private Sight sight;
 
     public Photo(){}
     public UUID getIdPhoto() {
@@ -75,11 +76,17 @@ public class Photo {
         this.thumbnail = thumbnail;
     }
 
-    public City getCity() {
-        return city;
+    public Sight getSight() {
+        return sight;
     }
 
-    public void setCity(City city) {
-        this.city = city;
+    public void setSight(Sight sight) {
+        this.sight = sight;
+    }
+
+    public Photo(String name, double longitude, double latitude) {
+        this.name = name;
+        this.longitude = longitude;
+        this.latitude = latitude;
     }
 }

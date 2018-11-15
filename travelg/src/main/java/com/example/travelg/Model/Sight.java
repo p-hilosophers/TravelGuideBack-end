@@ -23,6 +23,13 @@ public class Sight {
 
     public Sight(){}
 
+    public Sight(String name, double longitude, double latitude, City city) {
+        this.name = name;
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.city = city;
+    }
+
     public UUID getSightId() {
         return sightId;
     }
