@@ -12,5 +12,5 @@ import java.util.UUID;
 @Repository
 public interface PhotoRepository extends JpaRepository<Photo, UUID> {
 
-   List<Photo> findBySight_SightId(UUID sightId);
+   List<Photo> findBySight_Name(String name);
 }
