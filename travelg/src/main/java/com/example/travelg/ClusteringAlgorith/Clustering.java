@@ -6,6 +6,7 @@ import net.sf.javaml.clustering.KMeans;
 import net.sf.javaml.core.Dataset;
 import net.sf.javaml.tools.data.FileHandler;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -21,8 +22,10 @@ public class Clustering {
 
     private List<List<Sight>> sightList = new ArrayList<>();
 
-    @GetMapping("/routes")
-    public List<List<Sight>> showRoutes() throws IOException {
+    @GetMapping("/routes/{cityName}")
+    public List<List<Sight>> showRoutes(@PathVariable String cityName) throws IOException {
+        CoordinatesRetriever retriever = new CoordinatesRetriever();
+        retriever.retrieveSights(cityName);
         Dataset data = FileHandler.loadDataset(new File("sights.txt"), 2, ",");
 
         int k = data.size()/3;

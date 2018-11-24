@@ -19,7 +19,7 @@ public class CoordinatesRetriever {
     public List<Sight> retrieveSights(String city)
     {
         Retrofit.Builder builder = new Retrofit.Builder()
-            .baseUrl("http://192.168.1.10:8080/")
+            .baseUrl("http://83.212.103.26:8080/")
             .addConverterFactory(GsonConverterFactory.create());
 
         Retrofit retrofit = builder.build();
