@@ -15,11 +15,12 @@ import java.util.List;
 public class CoordinatesRetriever {
 
     private List<Sight> sights = new ArrayList<>();
+    private String text = "";
 
     public List<Sight> retrieveSights(String city)
     {
         Retrofit.Builder builder = new Retrofit.Builder()
-            .baseUrl("http://83.212.103.26:8080/")
+            .baseUrl("http://192.168.1.17¨8081/")
             .addConverterFactory(GsonConverterFactory.create());
 
         Retrofit retrofit = builder.build();
@@ -29,7 +30,7 @@ public class CoordinatesRetriever {
         call.enqueue(new Callback<List<Sight>>() {
             @Override
             public void onResponse(Call<List<Sight>> call, Response<List<Sight>> response) {
-                String text = "";
+
                 sights = response.body();
                 for(Sight sight:sights)
                 {
@@ -38,6 +39,7 @@ public class CoordinatesRetriever {
                 FileCreator fileCreator = new FileCreator();
                 try {
                     fileCreator.createFile(text);
+                    text = "";
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
