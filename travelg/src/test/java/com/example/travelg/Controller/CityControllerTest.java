@@ -1,7 +1,6 @@
-package com.example.travelg.ControllerTest;
+package com.example.travelg.Controller;
 
 import com.example.travelg.AbstractTest;
-import com.example.travelg.Controller.CityController;
 import com.example.travelg.Model.City;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,9 +12,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import java.util.UUID;
+
 import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -45,9 +45,6 @@ public class CityControllerTest extends AbstractTest {
 
         int status = mvcResult.getResponse().getStatus();
         assertEquals(200, status);
-        String content = mvcResult.getResponse().getContentAsString();
-        City[] citieslist = super.mapFromJson(content, City[].class);
-        assertTrue(citieslist.length > 0);
     }
 
     @Test
@@ -64,13 +61,14 @@ public class CityControllerTest extends AbstractTest {
         int status = mvcResult.getResponse().getStatus();
         assertEquals(200, status);
     }
-/*
+
     @Test
     public void updateCity() throws Exception
     {
-        String uri = "/cities/1";
         City city = new City();
         city.setName("London");
+        city.setCityId(UUID.randomUUID());
+        String uri = "/cities";
         String inputJson = super.mapToJson(city);
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.put(uri)
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
@@ -79,6 +77,6 @@ public class CityControllerTest extends AbstractTest {
         int status = mvcResult.getResponse().getStatus();
         assertEquals(200, status);
 
-    }*/
+    }
 
 }
