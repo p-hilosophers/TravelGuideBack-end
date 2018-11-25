@@ -15,22 +15,36 @@ import java.util.List;
 public class CoordinatesRetriever {
 
     private List<Sight> sights = new ArrayList<>();
-    private String text = "";
 
-    public List<Sight> retrieveSights(String city)
+    public List<Sight> retrieveSights(String city) throws IOException
     {
         Retrofit.Builder builder = new Retrofit.Builder()
-            .baseUrl("http://192.168.1.17¨8081/")
+            .baseUrl("http://83.212.103.26:8081/")
             .addConverterFactory(GsonConverterFactory.create());
 
         Retrofit retrofit = builder.build();
         SightClient client = retrofit.create(SightClient.class);
         Call<List<Sight>> call = client.repoForSights(city);
 
-        call.enqueue(new Callback<List<Sight>>() {
+        Response<List<Sight>> result = call.execute();
+        String text = "";
+        sights = result.body();
+        for(Sight sight:sights) {
+            text += sight.getLatitude()+","+sight.getLongitude()+","+sight.getName()+"\n";
+        }
+        FileCreator fileCreator = new FileCreator();
+        try {
+            fileCreator.createFile(text);
+            text = "";
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+      /*  call.enqueue(new Callback<List<Sight>>() {
             @Override
             public void onResponse(Call<List<Sight>> call, Response<List<Sight>> response) {
-
+                String text = "";
                 sights = response.body();
                 for(Sight sight:sights)
                 {
@@ -39,7 +53,6 @@ public class CoordinatesRetriever {
                 FileCreator fileCreator = new FileCreator();
                 try {
                     fileCreator.createFile(text);
-                    text = "";
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -50,7 +63,7 @@ public class CoordinatesRetriever {
                 System.out.println("error");
             }
 
-        });
+        });*/
         return sights;
     }
 }
