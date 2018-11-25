@@ -19,16 +19,14 @@ import java.util.List;
 @RestController
 public class Clustering {
 
-
-    private List<List<Sight>> sightList = new ArrayList<>();
-
     @GetMapping("/routes/{cityName}")
     public List<List<Sight>> showRoutes(@PathVariable String cityName) throws IOException {
         CoordinatesRetriever retriever = new CoordinatesRetriever();
         retriever.retrieveSights(cityName);
         Dataset data = FileHandler.loadDataset(new File("sights.txt"), 2, ",");
+        List<List<Sight>> sightList = new ArrayList<>();
 
-        int k = data.size()/3;
+        int k = (data.size()/3)+1;
         Clusterer km = new KMeans(k);
         Dataset[] clusters = km.cluster(data);
 

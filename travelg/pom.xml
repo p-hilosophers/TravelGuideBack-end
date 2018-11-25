@@ -49,11 +49,6 @@
             <artifactId>converter-gson</artifactId>
             <version>2.4.0</version>
         </dependency>
-        <dependency>
-            <groupId>net.sf</groupId>
-            <artifactId>javaml</artifactId>
-            <version>0.1.7</version>
-        </dependency>
       <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
@@ -64,6 +59,12 @@
         <artifactId>jaxb-api</artifactId>
         <version>2.3.0</version>
     </dependency>
+
+        <dependency>
+            <groupId>net.sf</groupId>
+            <artifactId>jml</artifactId>
+            <version>1.0b1</version>
+        </dependency>
             </dependencies>
 
     <build>
