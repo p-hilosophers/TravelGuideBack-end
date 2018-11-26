@@ -15,9 +15,8 @@ public class JsonDataParser {
         for(int i = 0; i< SightDataRetriever.getCount(); i++) {
             destAddresses.add(obj.getJSONArray("destination_addresses").get(i).toString());
             distanceInKm.add(obj.getJSONArray("rows").getJSONObject(0).getJSONArray("elements").getJSONObject(i).getJSONObject("distance").getString("text"));
-            durationInMin.add(obj.getJSONArray("rows").getJSONObject(0).getJSONArray("elements").getJSONObject(i).getJSONObject("duration").getString("text"));
             distanceValue.add(obj.getJSONArray("rows").getJSONObject(0).getJSONArray("elements").getJSONObject(i).getJSONObject("distance").getDouble("value"));
-            System.out.println(destAddresses.get(i) + "\t" + distanceInKm.get(i) + "\t" + durationInMin.get(i) + "\t" + distanceValue.get(i));
+            durationInMin.add(obj.getJSONArray("rows").getJSONObject(0).getJSONArray("elements").getJSONObject(i).getJSONObject("duration").getString("text"));
         }
     }
 

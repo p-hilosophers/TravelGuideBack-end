@@ -21,7 +21,7 @@ public class DistanceCalculator {
             for(int i = 1; i< SightDataRetriever.getCount(); i++) {
                 urlString += "|" + destinationsLat.get(i) + "," + destinationsLon.get(i);
             }
-            urlString += "&key=AIzaSyDn7h1CXfwVII-b4hMigDVQIe_5Kdrz6hQ";
+            urlString += "&key=Insert_Your_Key_Here";
             URL url = new URL(urlString);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             BufferedReader in = new BufferedReader( new InputStreamReader((con.getInputStream())));
