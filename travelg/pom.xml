@@ -45,23 +45,27 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>com.squareup.retrofit2</groupId>
+            <artifactId>converter-gson</artifactId>
+            <version>2.4.0</version>
+        </dependency>
+      <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>20180813</version>
-        </dependency>
+      </dependency>
         <dependency>
-            <groupId>com.squareup.retrofit2</groupId>
-            <artifactId>retrofit</artifactId>
-            <version>2.5.0</version>
-        </dependency>
+        <groupId>javax.xml.bind</groupId>
+        <artifactId>jaxb-api</artifactId>
+        <version>2.3.0</version>
+    </dependency>
+
         <dependency>
-            <groupId>com.squareup.retrofit2</groupId>
-            <artifactId>converter-gson</artifactId>
-            <version>2.5.0</version>
+            <groupId>net.sf</groupId>
+            <artifactId>jml</artifactId>
+            <version>1.0b1</version>
         </dependency>
-
-
-    </dependencies>
+            </dependencies>
 
     <build>
         <plugins>

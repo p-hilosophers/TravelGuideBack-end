@@ -21,10 +21,10 @@ public class PhotoController {
     @Autowired
     private SightsRepository sightRepository;
 
-    @GetMapping("/sights/{sightId}/photos")
-    public List<Photo> getPhotosByCityId(@PathVariable(value = "sightId") UUID sightId)
+    @GetMapping("/sights/{sightName}/photos")
+    public List<Photo> getPhotosByCityId(@PathVariable(value = "sightName") String  sightName)
     {
-        return photoRepository.findBySight_SightId(sightId);
+        return photoRepository.findBySight_Name(sightName);
     }
 
     @PostMapping("/sights/{sightId}/photos")

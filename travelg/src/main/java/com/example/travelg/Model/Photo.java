@@ -19,9 +19,9 @@ public class Photo {
 
     private double latitude;
 
-    private byte[] image;
+    private String image;
 
-    private byte[] thumbnail;
+    private String thumbnail;
 
     @ManyToOne(fetch= FetchType.LAZY)
     @JoinColumn(name="sightId",referencedColumnName = "sightId")
@@ -60,19 +60,19 @@ public class Photo {
         this.latitude = latitude;
     }
 
-    public byte[] getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(String  image) {
         this.image = image;
     }
 
-    public byte[] getThumbnail() {
+    public String getThumbnail() {
         return thumbnail;
     }
 
-    public void setThumbnail(byte[] thumbnail) {
+    public void setThumbnail(String thumbnail) {
         this.thumbnail = thumbnail;
     }
 
