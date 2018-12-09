@@ -17,16 +17,22 @@ public class Sight {
 
     private double latitude;
 
+    private String season;
+
+    private int photoCount;
+
     @ManyToOne(fetch= FetchType.EAGER)
     @JoinColumn(name="cityId",referencedColumnName = "cityId")
     private City city;
 
     public Sight(){}
 
-    public Sight(String name, double longitude, double latitude, City city) {
+    public Sight(String name, double longitude, double latitude, String season, int photoCount, City city) {
         this.name = name;
         this.longitude = longitude;
         this.latitude = latitude;
+        this.season = season;
+        this.photoCount = photoCount;
         this.city = city;
     }
 
@@ -68,5 +74,21 @@ public class Sight {
 
     public void setCity(City city) {
         this.city = city;
+    }
+
+    public int getPhotoCount() {
+        return photoCount;
+    }
+
+    public void setPhotoCount(int photoCount) {
+        this.photoCount = photoCount;
+    }
+
+    public String getSeason() {
+        return season;
+    }
+
+    public void setSeason(String season) {
+        this.season = season;
     }
 }

@@ -27,7 +27,7 @@ public class CityRepositoryTest {
     public void testStoreCity()
     {
 
-        City city = cityRepository.save(new City("aaa",0.0,0.0,"",0));
+        City city = cityRepository.save(new City("aaa",0.0,0.0,""));
 
         assertThat(city).isNotNull();
         assertThat(cityRepository.count()).isEqualTo(1L);

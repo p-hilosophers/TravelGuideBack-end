@@ -19,16 +19,13 @@ public class City {
 
     private String photo;
 
-    private int photoCount;
-
     public City(){}
 
-    public City(String name, double longitude, double latitude,String photo, int photoCount) {
+    public City(String name, double longitude, double latitude, String photo) {
         this.name = name;
         this.longitude = longitude;
         this.latitude = latitude;
         this.photo = photo;
-        this.photoCount = photoCount;
     }
 
     public UUID getCityId() {
@@ -61,14 +58,6 @@ public class City {
 
     public void setLatitude(double latitude) {
         this.latitude = latitude;
-    }
-
-    public int getPhotoCount() {
-        return photoCount;
-    }
-
-    public void setPhotoCount(int photoCount) {
-        this.photoCount = photoCount;
     }
 
     public void setPhoto(String photo){this.photo = photo;}

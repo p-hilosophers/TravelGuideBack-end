@@ -61,6 +61,8 @@ public class SightController {
                     sight.setName(sightRequest.getName());
                     sight.setLatitude(sightRequest.getLatitude());
                     sight.setLongitude(sightRequest.getLongitude());
+                    sight.setPhotoCount(sightRequest.getPhotoCount());
+                    sight.setSeason(sightRequest.getSeason());
                     sight.setCity(sightRequest.getCity());
                     return sightsRepository.save(sight);
                 }).orElseThrow(()-> new ResourceNotFoundException("Sight not found with id" +sightId));
