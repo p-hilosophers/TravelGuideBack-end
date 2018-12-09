@@ -7,9 +7,9 @@ import java.io.IOException;
 
 public class FileCreator {
 
-    public void createFile(String text) throws IOException
+    public void createFile(String text,String fileName) throws IOException
     {
-        File file = new File("sights.txt");
+        File file = new File(fileName+".txt");
 
         if(file.exists()){
             file.delete();
@@ -17,15 +17,11 @@ public class FileCreator {
         file.createNewFile();
 
         BufferedWriter output = null;
-        try {
             output = new BufferedWriter(new FileWriter(file));
             output.write(text);
-        } catch ( IOException e ) {
-            e.printStackTrace();
-        } finally {
             if ( output != null ) {
                 output.close();
             }
-        }
     }
 }
+
