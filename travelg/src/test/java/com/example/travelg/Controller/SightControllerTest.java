@@ -1,6 +1,6 @@
-package com.example.travelg.ControllerTest;
+package com.example.travelg.Controller;
 
-import com.example.travelg.Controller.UserController;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,14 +11,14 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class UserControllerTest {
+public class SightControllerTest {
 
     @Autowired
-    private UserController userController;
+    private SightController sightController;
 
     @Test
     public void controllerInitializedCorrectly() {
 
-        assertThat(userController).isNotNull();
+        assertThat(sightController).isNotNull();
     }
 }
