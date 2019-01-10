@@ -61,11 +61,12 @@
     </dependency>
 
         <dependency>
-            <groupId>net.sf</groupId>
+            <groupId>net.sf.jml</groupId>
             <artifactId>jml</artifactId>
-            <version>1.0b1</version>
+            <version>1.0b3</version>
         </dependency>
-            </dependencies>
+
+    </dependencies>
 
     <build>
         <plugins>

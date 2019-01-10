@@ -1,7 +1,7 @@
 package com.example.travelg;
 
+import com.example.travelg.ClusteringAlgorith.SightClient;
 import com.example.travelg.Model.Sight;
-import com.example.travelg.Repository.SightClient;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
@@ -22,7 +22,7 @@ public class SightDataRetriever {
     public static List<Sight> returnData(String city) throws IOException {
         List<Sight> sightList = new ArrayList<>();
         Retrofit.Builder builder = new Retrofit.Builder()
-                .baseUrl("http://83.212.103.26:8081/")
+                .baseUrl("http://35.204.237.100:8081/")
                 .addConverterFactory(GsonConverterFactory.create());
 
         Retrofit retrofit = builder.build();

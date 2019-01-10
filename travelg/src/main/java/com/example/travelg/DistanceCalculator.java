@@ -16,12 +16,12 @@ public class DistanceCalculator {
         try {
             String urlString = "https://maps.googleapis.com/maps/api/distancematrix/json?mode=walking" +
                     "&origins=" + originsLat + "," + originsLon +
-                    "&destinations=" + destinationsLat.get(0) + ","+ destinationsLon.get(0);
+                    "&destinations=" + destinationsLat.get(0) + "," + destinationsLon.get(0);
 
             for(int i = 1; i< SightDataRetriever.getCount(); i++) {
                 urlString += "|" + destinationsLat.get(i) + "," + destinationsLon.get(i);
             }
-            urlString += "&key=Insert_Your_Key_Here";
+            urlString += "&key=AIzaSyDn7h1CXfwVII-b4hMigDVQIe_5Kdrz6hQ";
             URL url = new URL(urlString);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             BufferedReader in = new BufferedReader( new InputStreamReader((con.getInputStream())));
