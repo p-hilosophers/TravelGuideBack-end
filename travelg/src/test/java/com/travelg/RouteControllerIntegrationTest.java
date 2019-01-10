@@ -50,7 +50,7 @@ public class RouteControllerIntegrationTest {
 
 
         when(service.getRoutes("Berlin")).thenReturn(new ClusteringResult(
-              Arrays.asList(Arrays.asList(new Sight("Brandenburg gate",0.0,0.0,"",0,new City())))));
+              Arrays.asList(Arrays.asList(new Sight("Brandenburg gate",0.0,0.0,"", "", 0,new City())))));
 
         ClusteringResult result = service.getRoutes("Berlin");
         mvc.perform(get("/routes/Berlin")

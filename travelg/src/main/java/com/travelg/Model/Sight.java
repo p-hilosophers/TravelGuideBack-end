@@ -19,6 +19,8 @@ public class Sight {
 
     private String season;
 
+    private String dayNight;
+
     private int photoCount;
 
     @ManyToOne(fetch= FetchType.EAGER)
@@ -27,11 +29,12 @@ public class Sight {
 
     public Sight(){}
 
-    public Sight(String name, double longitude, double latitude, String season, int photoCount, City city) {
+    public Sight(String name, double longitude, double latitude, String season, String dayNight, int photoCount, City city) {
         this.name = name;
         this.longitude = longitude;
         this.latitude = latitude;
         this.season = season;
+        this.dayNight = dayNight;
         this.photoCount = photoCount;
         this.city = city;
     }
@@ -90,5 +93,13 @@ public class Sight {
 
     public void setSeason(String season) {
         this.season = season;
+    }
+
+    public String getDayNight() {
+        return dayNight;
+    }
+
+    public void setDayNight(String dayNight) {
+        this.dayNight = dayNight;
     }
 }
