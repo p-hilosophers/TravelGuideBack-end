@@ -64,7 +64,7 @@
                 <artifactId>ml</artifactId>
                 <scope>system</scope>
                 <version>1.0</version>
-                <systemPath>${basedir}\javaml-0.1.7.jar</systemPath>
+                <systemPath>${basedir}/javaml-0.1.7.jar</systemPath>
             </dependency>
 
     </dependencies>
