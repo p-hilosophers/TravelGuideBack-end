@@ -59,13 +59,15 @@
         <artifactId>jaxb-api</artifactId>
         <version>2.3.0</version>
     </dependency>
+            <dependency>
+                <groupId>javaml</groupId>
+                <artifactId>ml</artifactId>
+                <scope>system</scope>
+                <version>1.0</version>
+                <systemPath>${basedir}\javaml-0.1.7.jar</systemPath>
+            </dependency>
 
-        <dependency>
-            <groupId>net.sf</groupId>
-            <artifactId>jml</artifactId>
-            <version>1.0b1</version>
-        </dependency>
-            </dependencies>
+    </dependencies>
 
     <build>
         <plugins>
