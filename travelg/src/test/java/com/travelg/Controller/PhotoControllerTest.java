@@ -14,9 +14,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.BDDMockito.willReturn;
-
 @SpringBootTest
 @RunWith(SpringRunner.class)
 public class PhotoControllerTest extends AbstractTest {
@@ -48,9 +45,6 @@ public class PhotoControllerTest extends AbstractTest {
 
         int status = mvcResult.getResponse().getStatus();
         assertEquals(200, status);
-        String content = mvcResult.getResponse().getContentAsString();
-        City[] citieslist = super.mapFromJson(content, City[].class);
-        assertTrue(citieslist.length > 0);
 
 
     }

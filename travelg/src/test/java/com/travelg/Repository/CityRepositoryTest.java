@@ -10,6 +10,8 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
 
+import javax.transaction.Transactional;
+
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
@@ -22,16 +24,6 @@ public class CityRepositoryTest {
 
     @Autowired
     private TestEntityManager entityManager;
-
-    @Test
-    public void testStoreCity()
-    {
-
-        City city = cityRepository.save(new City("aaa",0.0,0.0,""));
-
-        assertThat(city).isNotNull();
-        assertThat(cityRepository.count()).isEqualTo(1L);
-    }
 
     @Test
     public void whenFindByName_thenReturnCity()
