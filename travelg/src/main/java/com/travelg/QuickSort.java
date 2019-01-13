@@ -1,5 +1,5 @@
 
-package com.example.travelg;
+package com.travelg;
 
 import java.util.Collections;
 import java.util.List;

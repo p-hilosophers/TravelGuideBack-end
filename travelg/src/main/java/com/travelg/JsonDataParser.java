@@ -1,6 +1,6 @@
-package com.example.travelg;
+package com.travelg;
 
-import com.example.travelg.Model.Sight;
+import com.travelg.Model.Sight;
 import org.json.JSONObject;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

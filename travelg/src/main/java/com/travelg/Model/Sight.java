@@ -1,4 +1,4 @@
-package com.example.travelg.Model;
+package com.travelg.Model;
 
 import javax.persistence.*;
 import java.util.UUID;

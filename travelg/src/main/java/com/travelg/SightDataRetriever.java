@@ -1,7 +1,7 @@
-package com.example.travelg;
+package com.travelg;
 
-import com.example.travelg.ClusteringAlgorith.SightClient;
-import com.example.travelg.Model.Sight;
+import com.travelg.ClusteringAlgorith.SightClient;
+import com.travelg.Model.Sight;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;

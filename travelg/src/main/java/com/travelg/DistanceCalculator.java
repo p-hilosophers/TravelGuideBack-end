@@ -1,4 +1,4 @@
-package com.example.travelg;
+package com.travelg;
 
 import org.json.JSONObject;
 
