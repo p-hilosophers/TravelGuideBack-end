@@ -47,7 +47,7 @@ public class UserControllerTest extends AbstractTest {
         assertEquals(200, status);
     }
 
-    @Test
+   /* @Test
     public void insertUser() throws  Exception
     {
         String uri = "/users";
@@ -77,5 +77,7 @@ public class UserControllerTest extends AbstractTest {
         int status = mvcResult.getResponse().getStatus();
         assertEquals(200, status);
 
-    }
+    }*/
+
+
 }

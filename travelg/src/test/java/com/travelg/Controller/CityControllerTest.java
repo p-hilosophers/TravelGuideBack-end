@@ -62,7 +62,7 @@ public class CityControllerTest extends AbstractTest {
         assertEquals(200, status);
     }
 
-    @Test
+   /* @Test
     public void updateCity() throws Exception
     {
         City city = new City();
@@ -77,6 +77,6 @@ public class CityControllerTest extends AbstractTest {
         int status = mvcResult.getResponse().getStatus();
         assertEquals(200, status);
 
-    }
+    }*/
 
 }

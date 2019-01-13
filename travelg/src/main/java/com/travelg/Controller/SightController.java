@@ -26,14 +26,6 @@ public class SightController {
     {
         return  sightsRepository.findByCity_Name(cityName);
     }
-
- /*   @GetMapping("/cities/{cityId}/sights")
-    public Page<Sight> getSightsByCityId(@PathVariable(value = "cityId") UUID cityId,
-                                         Pageable pageable)
-    {
-        return sightsRepository.findByCity_CityId(cityId,pageable);
-    }*/
-
     @PostMapping("/cities/{cityId}/sights")
     public Sight addSight(@PathVariable UUID cityId,
                           @Valid @RequestBody Sight sight)

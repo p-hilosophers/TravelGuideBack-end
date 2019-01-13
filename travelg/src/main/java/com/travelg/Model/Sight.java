@@ -38,6 +38,11 @@ public class Sight {
         this.photoCount = photoCount;
         this.city = city;
     }
+    public Sight(String name, double longitude, double latitude) {
+        this.name = name;
+        this.longitude = longitude;
+        this.latitude = latitude;
+    }
 
     public UUID getSightId() {
         return sightId;

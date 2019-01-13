@@ -1,6 +1,7 @@
 package com.travelg.ClusteringAlgorith;
 
 import com.travelg.Model.Sight;
+
 import net.sf.javaml.clustering.Clusterer;
 import net.sf.javaml.clustering.KMeans;
 import net.sf.javaml.core.Dataset;

@@ -12,7 +12,5 @@ import java.util.UUID;
 @Repository
 public interface SightsRepository extends JpaRepository<Sight, UUID> {
 
-    Page<Sight> findByCity_CityId(UUID cityId, Pageable pageable);
-
     List<Sight> findByCity_Name(String name);
 }
