@@ -2,8 +2,8 @@ package com.travelg;
 
 public class SightDto {
 
-    String name;
-    double distance;
+    private String name;
+    private double distance;
 
     public String getName() {
         return name;
