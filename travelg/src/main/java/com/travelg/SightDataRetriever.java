@@ -20,6 +20,7 @@ public class SightDataRetriever {
     }
 
     public static List<Sight> returnData(String city) throws IOException {
+        count = 0;
         List<Sight> sightList = new ArrayList<>();
         Retrofit.Builder builder = new Retrofit.Builder()
                 .baseUrl("http://35.204.237.100:8081/")
