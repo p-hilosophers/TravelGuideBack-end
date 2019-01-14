@@ -1,4 +1,4 @@
-package com.travelg;
+package com.travelg.Sorting;
 
 public class SightDto {
 
