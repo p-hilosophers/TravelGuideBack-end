@@ -79,4 +79,12 @@ public class Photo {
         this.longitude = longitude;
         this.latitude = latitude;
     }
+
+    public Photo(String name, double longitude, double latitude,Sight sight) {
+        this.name = name;
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.sight = sight;
+    }
+
 }
